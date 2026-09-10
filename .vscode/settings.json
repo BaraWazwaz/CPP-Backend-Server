@@ -1,0 +1,7 @@
+{
+    "cmake.cmakePath": "C:\\msys64\\ucrt64\\bin\\cmake.exe",
+    "cmake.configureArgs": [
+        "-DCMAKE_TOOLCHAIN_FILE=OFF",
+        "-DBUILD_REDIS=OFF"
+    ]
+}
