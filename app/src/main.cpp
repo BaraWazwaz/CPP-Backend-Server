@@ -1,4 +1,5 @@
 #include <drogon/drogon.h>
+#include "hello.hpp"
 #include <iostream>
 
 int main() {
@@ -6,12 +7,13 @@ int main() {
 
     // Run the server on all local interfaces on port 8888
     drogon::app().addListener("0.0.0.0", 8888);
-    
+
+    std::string message = getHelloWorld();
     // Fallback landing page handler
-    drogon::app().registerHandler("/", [](const drogon::HttpRequestPtr& req, 
+    drogon::app().registerHandler("/", [&message](const drogon::HttpRequestPtr& req, 
                                           std::function<void (const drogon::HttpResponsePtr&)> &&callback) {
         auto resp = drogon::HttpResponse::newHttpResponse();
-        resp->setBody("<h1>Hello from Drogon C++ Backend!</h1>");
+        resp->setBody(message);
         resp->setStatusCode(drogon::k200OK);
         callback(resp);
     });
